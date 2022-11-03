@@ -6,17 +6,21 @@ exports[`Pagina de configuração deve ser renderizada corretamente 1`] = `
     class="card"
   >
     <form>
-      <input
-        placeholder="Insira os nomes dos participantes"
-        type="text"
-        value=""
-      />
-      <button
-        disabled=""
-        type="submit"
+      <div
+        class="input-group-btn"
       >
-        Adicionar
-      </button>
+        <input
+          placeholder="Insira os nomes dos participantes"
+          type="text"
+          value=""
+        />
+        <button
+          disabled=""
+          type="submit"
+        >
+          Adicionar
+        </button>
+      </div>
     </form>
   </div>
   <ul />

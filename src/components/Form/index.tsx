@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react'
+
 import { useAdicionarParticipante } from '../../state/hook/adicionarParticipante'
 import { useMensagemDeErro } from '../../state/hook/mensagemErro'
+
 import { Card } from '../Card'
+
+import './styles.css'
 
 const Form = () => {
   const [nome, setNome] = useState('')
@@ -9,10 +13,6 @@ const Form = () => {
 
   const adicionarParticipante = useAdicionarParticipante()
   const mensagemErro = useMensagemDeErro()
-
-  const hasNome = () => {
-    return Boolean(nome)
-  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -25,17 +25,23 @@ const Form = () => {
   return (
     <Card>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Insira os nomes dos participantes"
-          value={nome}
-          ref={inputRef}
-          onChange={e => setNome(e.target.value)}
-        />
-        <button type="submit" disabled={!hasNome()}>
-          Adicionar
-        </button>
-        {mensagemErro && <p role="alert">{mensagemErro}</p>}
+        <div className="input-group-btn">
+          <input
+            type="text"
+            placeholder="Insira os nomes dos participantes"
+            value={nome}
+            ref={inputRef}
+            onChange={e => setNome(e.target.value)}
+          />
+          <button type="submit" disabled={!nome}>
+            Adicionar
+          </button>
+        </div>
+        {mensagemErro && (
+          <p className="alert error" role="alert">
+            {mensagemErro}
+          </p>
+        )}
       </form>
     </Card>
   )

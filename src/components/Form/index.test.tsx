@@ -2,7 +2,7 @@ import React from 'react'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { RecoilRoot } from 'recoil'
 
-import Form from './Form'
+import Form from '.'
 
 describe('comportamento do Formulario.tsx', () => {
   it('quando o input está vazio, novos participantes não podem ser adicionados', () => {
