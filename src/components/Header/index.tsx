@@ -1,7 +1,7 @@
 import React from 'react'
 import './estilos.css'
 
-const Cabecalho = () => {
+const Header = () => {
   return (
     <header className="cabecalho">
       <div
@@ -18,4 +18,4 @@ const Cabecalho = () => {
   )
 }
 
-export default Cabecalho
+export default Header
