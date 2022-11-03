@@ -1,22 +1,121 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
-import Formulario from "./Formulario";
+import React from 'react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
+import { RecoilRoot } from 'recoil'
 
-// Jest
+import Formulario from './Formulario'
 
-test('quando o input está vazio, novos participantes não podem ser adicionados', () => {
+describe('comportamento do Formulario.tsx', () => {
+  it('quando o input está vazio, novos participantes não podem ser adicionados', () => {
+    render(
+      <RecoilRoot>
+        <Formulario />
+      </RecoilRoot>
+    )
 
-    render(<Formulario />)
-
-    // encontrar no DOM o input
-    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
-
-    // encontrar o botão
+    const input = screen.getByPlaceholderText(
+      'Insira os nomes dos participantes'
+    )
     const botao = screen.getByRole('button')
 
-    // garantir que o input esteja no documento
     expect(input).toBeInTheDocument()
-    // garantir que o botão esteja desabilitado
     expect(botao).toBeDisabled()
+  })
 
+  it('adicionar um participante caso exista um nome preenchido', () => {
+    render(
+      <RecoilRoot>
+        <Formulario />
+      </RecoilRoot>
+    )
+
+    const input = screen.getByPlaceholderText(
+      'Insira os nomes dos participantes'
+    )
+    const botao = screen.getByRole('button')
+
+    fireEvent.change(input, {
+      target: {
+        value: 'Jhon Doe',
+      },
+    })
+
+    fireEvent.click(botao)
+
+    expect(input).toHaveFocus()
+    expect(input).toHaveValue('')
+  })
+
+  it('não pode adicionar nomes duplicados na lista', () => {
+    render(
+      <RecoilRoot>
+        <Formulario />
+      </RecoilRoot>
+    )
+
+    const input = screen.getByPlaceholderText(
+      'Insira os nomes dos participantes'
+    )
+    const botao = screen.getByRole('button')
+
+    fireEvent.change(input, {
+      target: {
+        value: 'Jhon Doe',
+      },
+    })
+
+    fireEvent.click(botao)
+
+    fireEvent.change(input, {
+      target: {
+        value: 'Jhon Doe',
+      },
+    })
+
+    fireEvent.click(botao)
+
+    const alerta = screen.getByRole('alert')
+
+    expect(alerta.textContent).toEqual('Nome duplicado não é permitido!')
+  })
+
+  it('mensagem de erro deve desaparecer automaticamente', () => {
+    jest.useFakeTimers()
+
+    render(
+      <RecoilRoot>
+        <Formulario />
+      </RecoilRoot>
+    )
+
+    const input = screen.getByPlaceholderText(
+      'Insira os nomes dos participantes'
+    )
+    const botao = screen.getByRole('button')
+
+    fireEvent.change(input, {
+      target: {
+        value: 'Jhon Doe',
+      },
+    })
+
+    fireEvent.click(botao)
+
+    fireEvent.change(input, {
+      target: {
+        value: 'Jhon Doe',
+      },
+    })
+
+    fireEvent.click(botao)
+
+    let alerta = screen.queryByRole('alert')
+    expect(alerta).toBeInTheDocument()
+
+    act(() => {
+      jest.runAllTimers()
+    })
+
+    alerta = screen.queryByRole('alert')
+    expect(alerta).toBeNull()
+  })
 })
