@@ -2,13 +2,13 @@ import React from 'react'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { RecoilRoot } from 'recoil'
 
-import Formulario from './Formulario'
+import Form from './Form'
 
 describe('comportamento do Formulario.tsx', () => {
   it('quando o input está vazio, novos participantes não podem ser adicionados', () => {
     render(
       <RecoilRoot>
-        <Formulario />
+        <Form />
       </RecoilRoot>
     )
 
@@ -24,7 +24,7 @@ describe('comportamento do Formulario.tsx', () => {
   it('adicionar um participante caso exista um nome preenchido', () => {
     render(
       <RecoilRoot>
-        <Formulario />
+        <Form />
       </RecoilRoot>
     )
 
@@ -48,7 +48,7 @@ describe('comportamento do Formulario.tsx', () => {
   it('não pode adicionar nomes duplicados na lista', () => {
     render(
       <RecoilRoot>
-        <Formulario />
+        <Form />
       </RecoilRoot>
     )
 
@@ -83,7 +83,7 @@ describe('comportamento do Formulario.tsx', () => {
 
     render(
       <RecoilRoot>
-        <Formulario />
+        <Form />
       </RecoilRoot>
     )
 

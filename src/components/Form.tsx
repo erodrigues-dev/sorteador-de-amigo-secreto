@@ -3,7 +3,7 @@ import { useAdicionarParticipante } from '../state/hook/adicionarParticipante'
 import { useMensagemDeErro } from '../state/hook/mensagemErro'
 import { Card } from './Card'
 
-const Formulario = () => {
+const Form = () => {
   const [nome, setNome] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -41,4 +41,4 @@ const Formulario = () => {
   )
 }
 
-export default Formulario
+export default Form
