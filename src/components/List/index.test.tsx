@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { RecoilRoot } from 'recoil'
-import { useListParticipant } from '../state/hook/listParticipant'
 
-import { List } from './List'
+import { useListParticipants } from '../../state/hook/listParticipants'
 
-jest.mock('../state/hook/listParticipant', () => ({
-  useListParticipant: jest.fn(),
+import { List } from '.'
+
+jest.mock('../../state/hook/listParticipants', () => ({
+  useListParticipants: jest.fn(),
 }))
 
 describe('Lista de Participantes', () => {
@@ -15,7 +16,7 @@ describe('Lista de Participantes', () => {
   })
 
   it('deve exibir uma lista vazia', () => {
-    jest.mocked(useListParticipant).mockReturnValue([])
+    jest.mocked(useListParticipants).mockReturnValue([])
 
     render(
       <RecoilRoot>
@@ -29,7 +30,7 @@ describe('Lista de Participantes', () => {
   })
 
   it('deve exibir a lista de participantes', () => {
-    jest.mocked(useListParticipant).mockReturnValue(['Jhon Doe'])
+    jest.mocked(useListParticipants).mockReturnValue(['Jhon Doe'])
 
     render(
       <RecoilRoot>

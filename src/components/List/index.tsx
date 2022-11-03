@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useListParticipant } from '../state/hook/listParticipant'
+import { useListParticipants } from '../../state/hook/listParticipants'
 
 export const List = () => {
-  const list: string[] = useListParticipant()
+  const list: string[] = useListParticipants()
 
   return (
     <ul>

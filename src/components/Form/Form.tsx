@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { useAdicionarParticipante } from '../state/hook/adicionarParticipante'
-import { useMensagemDeErro } from '../state/hook/mensagemErro'
-import { Card } from './Card'
+import { useAdicionarParticipante } from '../../state/hook/adicionarParticipante'
+import { useMensagemDeErro } from '../../state/hook/mensagemErro'
+import { Card } from '../Card'
 
 const Form = () => {
   const [nome, setNome] = useState('')
