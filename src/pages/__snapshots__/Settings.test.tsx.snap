@@ -5,29 +5,47 @@ exports[`Pagina de configuração deve ser renderizada corretamente 1`] = `
   <div
     class="card"
   >
-    <form>
+    <section>
+      <h2>
+        Vamos começar!
+      </h2>
       <div
-        class="input-group-btn"
+        class="card"
       >
-        <input
-          placeholder="Insira os nomes dos participantes"
-          type="text"
-          value=""
-        />
-        <button
-          disabled=""
-          type="submit"
-        >
-          Adicionar
-        </button>
+        <form>
+          <div
+            class="input-group-btn"
+          >
+            <input
+              placeholder="Insira os nomes dos participantes"
+              type="text"
+              value=""
+            />
+            <button
+              disabled=""
+              type="submit"
+            >
+              Adicionar
+            </button>
+          </div>
+        </form>
       </div>
-    </form>
+      <ul />
+      <footer
+        class="footer"
+      >
+        <button
+          class="button"
+          disabled=""
+        >
+          Iniciar
+        </button>
+        <img
+          alt="Sacolas de compras"
+          src="/imagens/sacolas.png"
+        />
+      </footer>
+    </section>
   </div>
-  <ul />
-  <button
-    disabled=""
-  >
-    Iniciar
-  </button>
 </div>
 `;
