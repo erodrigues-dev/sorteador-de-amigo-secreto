@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { useListParticipants } from '../../state/hook/listParticipants'
 
+import './styles.css'
+
 export const Footer = () => {
   const list = useListParticipants()
   const navigate = useNavigate()
@@ -12,8 +14,15 @@ export const Footer = () => {
   }
 
   return (
-    <button disabled={list.length < 3} onClick={handleClick}>
-      Iniciar
-    </button>
+    <footer className="footer">
+      <button
+        className="button"
+        disabled={list.length < 3}
+        onClick={handleClick}
+      >
+        Iniciar
+      </button>
+      <img src="/imagens/sacolas.png" alt="Sacolas de compras" />
+    </footer>
   )
 }
