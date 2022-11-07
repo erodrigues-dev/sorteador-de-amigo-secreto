@@ -1,8 +1,8 @@
 import React from 'react'
-import { Card } from '../components/Card'
-import { Footer } from '../components/Footer'
-import Form from '../components/Form'
-import { List } from '../components/List'
+import { Card } from '../../components/Card'
+import { Footer } from '../../components/Footer'
+import Form from '../../components/Form'
+import { List } from '../../components/List'
 
 export const Settings = () => {
   return (

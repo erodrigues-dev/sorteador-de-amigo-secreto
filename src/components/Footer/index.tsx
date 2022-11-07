@@ -1,15 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useListParticipants } from '../../state/hook/listParticipants'
+import { useListParticipants } from '../../state/hook/useListParticipants'
+import { useSortingFriends } from '../../state/hook/useSortingFriends'
 
 import './styles.css'
 
 export const Footer = () => {
   const list = useListParticipants()
+  const sortingFriends = useSortingFriends()
   const navigate = useNavigate()
 
   const handleClick = () => {
+    sortingFriends()
     navigate('/sorteio')
   }
 

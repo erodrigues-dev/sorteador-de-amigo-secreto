@@ -5,6 +5,11 @@ export const listaParticipantesState = atom<string[]>({
   default: [],
 })
 
+export const friendsState = atom<Map<string, string>>({
+  key: 'friendsState',
+  default: new Map(),
+})
+
 export const erroState = atom<string>({
   key: 'erroState',
   default: '',

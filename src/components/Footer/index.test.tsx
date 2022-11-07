@@ -3,15 +3,20 @@ import React from 'react'
 import { RecoilRoot } from 'recoil'
 
 import { Footer } from '.'
-import { useListParticipants } from '../../state/hook/listParticipants'
+import { useListParticipants } from '../../state/hook/useListParticipants'
 
-jest.mock('../../state/hook/listParticipants', () => ({
+jest.mock('../../state/hook/useListParticipants', () => ({
   useListParticipants: jest.fn(),
 }))
 
 const mockNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate,
+}))
+
+const mockUseSortingFriends = jest.fn()
+jest.mock('../../state/hook/useSortingFriends.ts', () => ({
+  useSortingFriends: () => mockUseSortingFriends,
 }))
 
 describe('Footer da aplicacao', () => {
@@ -67,6 +72,7 @@ describe('Footer da aplicacao', () => {
       fireEvent.click(button)
 
       expect(mockNavigate).toHaveBeenCalledWith('/sorteio')
+      expect(mockUseSortingFriends).toHaveBeenCalled()
     })
   })
 })

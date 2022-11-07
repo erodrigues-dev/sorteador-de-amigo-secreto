@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 
-import { useAdicionarParticipante } from '../../state/hook/adicionarParticipante'
-import { useMensagemDeErro } from '../../state/hook/mensagemErro'
+import { useAddParticipant } from '../../state/hook/useAddParticipant'
+import { useMessageError } from '../../state/hook/useMessageError'
 
 import { Card } from '../Card'
 
@@ -11,8 +11,8 @@ const Form = () => {
   const [nome, setNome] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const adicionarParticipante = useAdicionarParticipante()
-  const mensagemErro = useMensagemDeErro()
+  const adicionarParticipante = useAddParticipant()
+  const mensagemErro = useMessageError()
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
